@@ -54,33 +54,12 @@ message.style.height =
   Number.parseInt(getComputedStyle(message).height) + 50 + "px";
 
 /////////////////////////////////////////////////////////////
+// Smooth scrolling
+/////////////////////////////////////////////////////////////
 
 const btnScrollTo = document.querySelector(".btn--scroll-to");
 const section1 = document.querySelector("#section--1");
 
-btnScrollTo.addEventListener("click", (e) => {
-  const s1coords = section1.getBoundingClientRect();
-  console.log(s1coords);
-
-  console.log(e.target.getBoundingClientRect());
-  console.log("Current scroll (X/Y)", window.pageXOffset, window.pageYOffset);
-  console.log(
-    "h/w",
-    document.documentElement.clientHeight,
-    document.documentElement.clientWidth
-  );
-
-  //Scrolling
-  // window.scrollTo(
-  //   s1coords.left + window.pageXOffset,
-  //   s1coords.top + window.pageYOffset
-  // );
-
-  // window.scrollTo({
-  //   left: s1coords.left + window.pageXOffset,
-  //   top: s1coords.top + window.pageYOffset,
-  //   behavior: "smooth",
-  // });
-
+btnScrollTo.addEventListener("click", () => {
   section1.scrollIntoView({ behavior: "smooth" });
 });
