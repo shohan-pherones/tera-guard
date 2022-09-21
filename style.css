@@ -545,6 +545,13 @@ h4 {
   text-decoration: none;
 }
 
+.footer__logo {
+  height: 5rem;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+}
+
 .footer__copyright {
   font-size: 1.4rem;
   color: #aaa;
