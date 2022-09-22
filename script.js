@@ -12,11 +12,13 @@ const nav = document.querySelector(".nav");
 const navLinks = document.querySelector(".nav__links");
 const header = document.querySelector(".header");
 const btnScrollTo = document.querySelector(".btn--scroll-to");
-const message = document.createElement("div");
+const allSections = document.querySelectorAll(".section");
 const section1 = document.querySelector("#section--1");
 const tabsContainer = document.querySelector(".operations__tab-container");
 const tabs = document.querySelectorAll(".operations__tab");
 const tabsContent = document.querySelectorAll(".operations__content");
+const cookieBody = document.querySelector(".cookie");
+const cookieCloseBtn = document.querySelector(".cookie__close");
 
 /////////////////////////////////////////////////////////////
 // Modal window
@@ -105,24 +107,6 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 headerObserver.observe(header);
 
 /////////////////////////////////////////////////////////////
-// Cookie element
-/////////////////////////////////////////////////////////////
-
-message.classList.add("cookie-message");
-message.innerHTML =
-  'We use cookies for improving functionalities and analytics. <button class="btn btn--close-cookie">Got it</button>';
-header.append(message);
-
-document.querySelector(".btn--close-cookie").addEventListener("click", () => {
-  message.remove();
-});
-
-message.style.backgroundColor = "#37383d";
-message.style.width = "100vw";
-message.style.height =
-  Number.parseInt(getComputedStyle(message).height) + 50 + "px";
-
-/////////////////////////////////////////////////////////////
 // Tabbed component
 /////////////////////////////////////////////////////////////
 
@@ -145,4 +129,34 @@ tabsContainer.addEventListener("click", function (e) {
   document
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add("operations__content--active");
+});
+
+/////////////////////////////////////////////////////////////
+// Reveal sections
+/////////////////////////////////////////////////////////////
+
+function revealSection(entries, observer) {
+  const entry = entries[0];
+  if (!entry.isIntersecting) return;
+  entry.target.classList.remove("section--hidden");
+  observer.unobserve(entry.target);
+}
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.2,
+});
+
+allSections.forEach((section) => {
+  sectionObserver.observe(section);
+  section.classList.add("section--hidden");
+});
+
+/////////////////////////////////////////////////////////////
+// Cookie
+/////////////////////////////////////////////////////////////
+
+cookieCloseBtn.addEventListener("click", () => {
+  cookieBody.classList.add("hidden");
+  cookieBody.style.bottom = "-12rem";
 });

@@ -45,16 +45,20 @@
 
       <!-- Hero section -->
       <div class="header__title">
-        <h1>
-          Your
-          <span class="highlight">security</span>
-          meets<br />
-          our
-          <span class="highlight">priority</span>
-        </h1>
-        <h4>The safest web experience for a peaceful life.</h4>
-        <button class="btn--text btn--scroll-to">Learn more &rarr;</button>
-        <img src="./img/hero.png" class="header__img" />
+        <div class="header__left">
+          <h1>
+            Your
+            <span class="highlight">security</span>
+            meets<br />
+            our
+            <span class="highlight">priority</span>
+          </h1>
+          <h4>The safest web experience for a peaceful life.</h4>
+          <button class="btn--text btn--scroll-to">Learn more &rarr;</button>
+        </div>
+        <div class="header__right">
+          <img src="./img/hero.png" class="header__img" />
+        </div>
       </div>
     </header>
 
@@ -420,6 +424,14 @@
       </form>
     </div>
     <div class="overlay hidden"></div>
+
+    <!-- Cookie message -->
+    <div class="cookie">
+      <p>
+        We have use your cookies to improve our functionalities and analytics.
+      </p>
+      <button class="btn cookie__close">Okay</button>
+    </div>
 
     <!-- Script file -->
     <script src="./script.js"></script>

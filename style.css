@@ -52,7 +52,7 @@ body {
 
 .section--hidden {
   opacity: 0;
-  transform: translateY(8rem);
+  transform: translateY(10rem);
 }
 
 .section__title {
@@ -129,6 +129,18 @@ img {
   width: 100%;
   padding: 0 6rem;
   z-index: 100;
+  animation: revealNav 1.5s 1;
+}
+
+@keyframes revealNav {
+  from {
+    transform: translateY(-5vw);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .nav.sticky {
@@ -200,6 +212,36 @@ img {
   justify-content: center;
   align-items: start;
   justify-items: start;
+}
+
+.header__left {
+  animation: revealHeaderLeft 1.5s 1;
+}
+
+.header__right {
+  animation: revealHeaderRight 1.5s 1;
+}
+
+@keyframes revealHeaderLeft {
+  from {
+    transform: translateX(-20rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes revealHeaderRight {
+  from {
+    transform: translateX(20rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 h1 {
@@ -644,13 +686,34 @@ h4 {
   opacity: 0;
 }
 
-.cookie-message {
+.cookie {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  background-color: #37383d;
+  width: 100vw;
+  height: 12rem;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 100%;
-  background-color: white;
-  color: #bbb;
-  font-size: 1.5rem;
-  font-weight: 400;
+  font-size: 1.6rem;
+  box-shadow: 0 -1rem 1rem rgba(0, 0, 0, 0.1);
+  transition: all 1s;
+  animation: revealCookie 1.5s 1;
+}
+
+.cookie p {
+  color: #eee;
+}
+
+@keyframes revealCookie {
+  from {
+    bottom: -12rem;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
 }
