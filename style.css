@@ -661,6 +661,12 @@ h4 {
   padding: 1rem 1.5rem;
   border: 1px solid #ddd;
   border-radius: 0.5rem;
+  transition: all 0.3s;
+}
+
+.modal__form input:focus {
+  outline: none;
+  border-color: #24cbc8;
 }
 
 .modal__form button {
