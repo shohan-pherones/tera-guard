@@ -19,6 +19,7 @@ const tabs = document.querySelectorAll(".operations__tab");
 const tabsContent = document.querySelectorAll(".operations__content");
 const cookieBody = document.querySelector(".cookie");
 const cookieCloseBtn = document.querySelector(".cookie__close");
+const imgTargets = document.querySelectorAll("img[data-src]");
 
 /////////////////////////////////////////////////////////////
 // Modal window
@@ -160,3 +161,28 @@ cookieCloseBtn.addEventListener("click", () => {
   cookieBody.classList.add("hidden");
   cookieBody.style.bottom = "-12rem";
 });
+
+/////////////////////////////////////////////////////////////
+// Lazy loading
+/////////////////////////////////////////////////////////////
+
+const loadImg = function (entries, observer) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+  entry.target.src = entry.target.dataset.src;
+
+  entry.target.addEventListener("load", function () {
+    entry.target.classList.remove("lazy-img");
+  });
+
+  observer.unobserve(entry.target);
+};
+
+const imgObserver = new IntersectionObserver(loadImg, {
+  root: null,
+  threshold: 0,
+  rootMargin: "250px",
+});
+
+imgTargets.forEach((img) => imgObserver.observe(img));
