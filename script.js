@@ -1,13 +1,22 @@
 "use strict";
 
 /////////////////////////////////////////////////////////////
-// Modal window
+// Elements
 /////////////////////////////////////////////////////////////
 
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".btn--close-modal");
 const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
+const header = document.querySelector(".header");
+const message = document.createElement("div");
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
+const navLinks = document.querySelector(".nav__links");
+
+/////////////////////////////////////////////////////////////
+// Modal window
+/////////////////////////////////////////////////////////////
 
 const openModal = function (e) {
   e.preventDefault();
@@ -21,8 +30,11 @@ const closeModal = function () {
 };
 
 btnsOpenModal.forEach((btn) => btn.addEventListener("click", openModal));
+
 btnCloseModal.addEventListener("click", closeModal);
+
 overlay.addEventListener("click", closeModal);
+
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape" && !modal.classList.contains("hidden")) {
     closeModal();
@@ -30,16 +42,32 @@ document.addEventListener("keydown", function (e) {
 });
 
 /////////////////////////////////////////////////////////////
-// Cookie element
+// Smooth scrolling
 /////////////////////////////////////////////////////////////
 
-const header = document.querySelector(".header");
-const message = document.createElement("div");
+// Page navigation
+navLinks.addEventListener("click", function (e) {
+  e.preventDefault();
+  if (e.target.classList.contains("nav__link")) {
+    const id = e.target.getAttribute("href");
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+  }
+});
+
+// Button scrolling
+btnScrollTo.addEventListener("click", () => {
+  section1.scrollIntoView({ behavior: "smooth" });
+});
+
+/////////////////////////////////////////////////////////////
+// Cookie element
+/////////////////////////////////////////////////////////////
 
 message.classList.add("cookie-message");
 message.innerHTML =
   'We use cookies for improving functionalities and analytics. <button class="btn btn--close-cookie">Got it</button>';
 header.append(message);
+
 document.querySelector(".btn--close-cookie").addEventListener("click", () => {
   message.remove();
 });
@@ -48,14 +76,3 @@ message.style.backgroundColor = "#37383d";
 message.style.width = "100vw";
 message.style.height =
   Number.parseInt(getComputedStyle(message).height) + 50 + "px";
-
-/////////////////////////////////////////////////////////////
-// Smooth scrolling
-/////////////////////////////////////////////////////////////
-
-const btnScrollTo = document.querySelector(".btn--scroll-to");
-const section1 = document.querySelector("#section--1");
-
-btnScrollTo.addEventListener("click", () => {
-  section1.scrollIntoView({ behavior: "smooth" });
-});
