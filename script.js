@@ -37,6 +37,7 @@ toggleBtn.addEventListener("click", function () {
     navLinks.classList.remove("nav__open");
   } else {
     navLinks.classList.add("nav__open");
+    document.querySelector("html").style.overflow = "hidden";
   }
 });
 
