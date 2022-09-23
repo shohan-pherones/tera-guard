@@ -42,9 +42,7 @@ const closeModal = function () {
 };
 
 btnsOpenModal.forEach((btn) => btn.addEventListener("click", openModal));
-
 btnCloseModal.addEventListener("click", closeModal);
-
 overlay.addEventListener("click", closeModal);
 
 document.addEventListener("keydown", function (e) {
@@ -84,7 +82,6 @@ function handleHover(e) {
     siblings.forEach((el) => {
       if (el !== link) el.style.opacity = this;
     });
-
     logo.style.opacity = this;
   }
 }
