@@ -27,6 +27,20 @@ const btnRight = document.querySelector(".slider__btn--right");
 const dotContainer = document.querySelector(".dots");
 
 /////////////////////////////////////////////////////////////
+// Togle navbar
+/////////////////////////////////////////////////////////////
+
+const toggleBtn = document.querySelector(".nav__toggle");
+
+toggleBtn.addEventListener("click", function () {
+  if (navLinks.classList.contains("nav__open")) {
+    navLinks.classList.remove("nav__open");
+  } else {
+    navLinks.classList.add("nav__open");
+  }
+});
+
+/////////////////////////////////////////////////////////////
 // Modal window
 /////////////////////////////////////////////////////////////
 
