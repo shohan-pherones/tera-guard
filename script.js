@@ -27,7 +27,7 @@ const btnRight = document.querySelector(".slider__btn--right");
 const dotContainer = document.querySelector(".dots");
 
 /////////////////////////////////////////////////////////////
-// Togle navbar
+// Toggle navbar
 /////////////////////////////////////////////////////////////
 
 const toggleBtn = document.querySelector(".nav__toggle");
@@ -38,6 +38,11 @@ toggleBtn.addEventListener("click", function () {
   } else {
     navLinks.classList.add("nav__open");
   }
+});
+
+navLinks.addEventListener("click", () => {
+  navLinks.classList.contains("nav__open") &&
+    navLinks.classList.remove("nav__open");
 });
 
 /////////////////////////////////////////////////////////////

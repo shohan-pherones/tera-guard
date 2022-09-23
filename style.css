@@ -734,6 +734,10 @@ h4 {
     margin-left: 0;
   }
 
+  .nav__links li a {
+    font-size: 2.5rem !important;
+  }
+
   .nav__links {
     display: none;
     opacity: 0;
@@ -743,9 +747,7 @@ h4 {
   .nav__links.nav__open {
     display: flex;
     flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background-color: #fff;
     position: absolute;
     height: 100vh;
     width: 100vw;
@@ -753,7 +755,7 @@ h4 {
     left: 0;
     z-index: 200;
     justify-content: center;
-    gap: 2rem;
+    gap: 3rem;
     opacity: 1;
     visibility: visible;
     transition: all 0.3s;
@@ -804,7 +806,7 @@ h4 {
 @media screen and (max-width: 768px) {
   .cookie {
     flex-direction: column;
-    height: 30rem;
+    height: 25rem;
   }
 
   .slider {
@@ -832,6 +834,10 @@ h4 {
 }
 
 @media screen and (max-width: 545px) {
+  .nav__item:nth-child(3) {
+    display: none;
+  }
+
   .header__title h1 {
     font-size: 4rem;
   }
