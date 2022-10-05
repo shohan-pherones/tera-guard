@@ -1,9 +1,8 @@
-"use strict";
+import "core-js/stable";
 
 /////////////////////////////////////////////////////////////
 // Elements
 /////////////////////////////////////////////////////////////
-
 const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
@@ -19,9 +18,7 @@ const tabs = document.querySelectorAll(".operations__tab");
 const tabsContent = document.querySelectorAll(".operations__content");
 const cookieBody = document.querySelector(".cookie");
 const cookieCloseBtn = document.querySelector(".cookie__close");
-const imgTargets = document.querySelectorAll("img[data-src]");
 const slides = document.querySelectorAll(".slide");
-const slider = document.querySelector(".slider");
 const btnLeft = document.querySelector(".slider__btn--left");
 const btnRight = document.querySelector(".slider__btn--right");
 const dotContainer = document.querySelector(".dots");
@@ -29,7 +26,6 @@ const dotContainer = document.querySelector(".dots");
 /////////////////////////////////////////////////////////////
 // Toggle navbar
 /////////////////////////////////////////////////////////////
-
 const toggleBtn = document.querySelector(".nav__toggle");
 
 toggleBtn.addEventListener("click", function () {
@@ -51,7 +47,6 @@ navLinks.addEventListener("click", () => {
 /////////////////////////////////////////////////////////////
 // Modal window
 /////////////////////////////////////////////////////////////
-
 const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove("hidden");
@@ -76,7 +71,6 @@ document.addEventListener("keydown", function (e) {
 /////////////////////////////////////////////////////////////
 // Smooth scrolling
 /////////////////////////////////////////////////////////////
-
 // Page navigation
 navLinks.addEventListener("click", function (e) {
   e.preventDefault();
@@ -94,7 +88,6 @@ btnScrollTo.addEventListener("click", () => {
 /////////////////////////////////////////////////////////////
 // Menu fade
 /////////////////////////////////////////////////////////////
-
 function handleHover(e) {
   if (e.target.classList.contains("nav__link")) {
     const link = e.target;
@@ -114,7 +107,6 @@ nav.addEventListener("mouseout", handleHover.bind(1));
 /////////////////////////////////////////////////////////////
 // Sticky navigation
 /////////////////////////////////////////////////////////////
-
 const navHeight = nav.getBoundingClientRect().height;
 
 function stickyNav(entries) {
@@ -134,7 +126,6 @@ headerObserver.observe(header);
 /////////////////////////////////////////////////////////////
 // Tabbed component
 /////////////////////////////////////////////////////////////
-
 tabsContainer.addEventListener("click", function (e) {
   const clicked = e.target.closest(".operations__tab");
 
@@ -159,7 +150,6 @@ tabsContainer.addEventListener("click", function (e) {
 /////////////////////////////////////////////////////////////
 // Reveal sections
 /////////////////////////////////////////////////////////////
-
 function revealSection(entries, observer) {
   const entry = entries[0];
   if (!entry.isIntersecting) return;
@@ -180,41 +170,14 @@ allSections.forEach((section) => {
 /////////////////////////////////////////////////////////////
 // Cookie
 /////////////////////////////////////////////////////////////
-
 cookieCloseBtn.addEventListener("click", () => {
   cookieBody.classList.add("hidden");
   cookieBody.style.bottom = "-12rem";
 });
 
 /////////////////////////////////////////////////////////////
-// Lazy loading
-/////////////////////////////////////////////////////////////
-
-const loadImg = function (entries, observer) {
-  const [entry] = entries;
-
-  if (!entry.isIntersecting) return;
-  entry.target.src = entry.target.dataset.src;
-
-  entry.target.addEventListener("load", function () {
-    entry.target.classList.remove("lazy-img");
-  });
-
-  observer.unobserve(entry.target);
-};
-
-const imgObserver = new IntersectionObserver(loadImg, {
-  root: null,
-  threshold: 0,
-  rootMargin: "250px",
-});
-
-imgTargets.forEach((img) => imgObserver.observe(img));
-
-/////////////////////////////////////////////////////////////
 // Slider
 /////////////////////////////////////////////////////////////
-
 let currentSlide = 0;
 const maxSlide = slides.length - 1;
 
@@ -227,6 +190,7 @@ function createDots() {
     );
   });
 }
+
 createDots();
 
 // Activate dot
@@ -239,6 +203,7 @@ function activateDot(slide) {
     .querySelector(`.dots__dot[data-slide="${slide}"]`)
     .classList.add("dots__dot--active");
 }
+
 activateDot(0);
 
 // Go to slide
@@ -247,6 +212,7 @@ function goToSlide(slide) {
     (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`)
   );
 }
+
 goToSlide(0);
 
 // Next slide
@@ -256,6 +222,7 @@ function nextSlide() {
   } else {
     currentSlide++;
   }
+
   goToSlide(currentSlide);
   activateDot(currentSlide);
 }
@@ -267,6 +234,7 @@ function prevSlide() {
   } else {
     currentSlide--;
   }
+
   goToSlide(currentSlide);
   activateDot(currentSlide);
 }
