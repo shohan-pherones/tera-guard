@@ -1,9 +1,9 @@
 {
   "name": "tera-guard",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "Anti-virus website",
   "scripts": {
-    "start": "parcel ./src/index.html",
+    "start": "parcel ./src/index.html --open",
     "build": "parcel build ./src/index.html"
   },
   "repository": {
